@@ -32,22 +32,21 @@ class Vector {
   }
 }
 
-class Planet {
-    constructor(position, velocity, mass, radius, color, name){
-        this.position = position;
-        this.velocity = velocity;
-        this.mass = mass;
+class Body {
+    constructor(x, y,radius,vx,vy,ax,ay,color){
+        this.pos = {x: x, y:y};
+        this.pos0 = { x: x, y: y };
+        this.vel = {x:vx, y:vy};
         this.radius = radius;
         this.color = color;
-        this.name = name;
     }
+  applyforce(){
+
+  }
 }
 
 
-function render(){
-    
-}
-function drawPlanet(object) {
+function drawObject(object) {
   let xpos = object.position.x;
   let ypos = object.position.y;
   let colour = object.color;
@@ -66,4 +65,4 @@ let O1 = new Planet(
   "red",
   "MARCH",
 );
-drawPlanet(O1);
+drawObject(O1);
