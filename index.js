@@ -38,6 +38,20 @@ class Body {
 
 let bodies = []
 
+function collide(b1, b2){
+  let vect = {x:b2.pos.x - b1.pos.x, y: b2.pos.y - b1.pos.y}
+  let dist = Math.hypot(vect.x, vect.y);
+  if(dist <= b1.radius + b2.radius){
+    var norm = {x: vect.x / dist, y: vect.y / dist}
+    var x = b1.radius + b2.radius - dist
+    var mass_sum = b1.mass + b2.mass
+    b1.pos.x -= norm.x * x * (b2.mass / mass_sum)
+    b1.pos.y -= norm.y * x * (b2.mass / mass_sum)
+    b2.pos.x += norm.x * x * (b1.mass / mass_sum);
+    b2.pos.y += norm.y * x * (b1.mass / mass_sum);
+  }
+}
+
 function attract(b1, b2) {
   var vect = {x: b2.pos.x - b1.pos.x, y: b2.pos.y - b1.pos.y}
   var dist = Math.hypot(vect.x, vect.y)
@@ -80,6 +94,7 @@ function animate(t) {
   for (let i = 0; i < bodies.length; i++) {
     for (let j = i + 1; j < bodies.length; j++) {
       attract(bodies[i], bodies[j])
+      collide(bodies[i], bodies[j])
     }
   }
 }
