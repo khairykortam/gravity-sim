@@ -3,6 +3,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const c = canvas.getContext("2d");
 
+
 let t_init = 0;
 let magic_const = 1000;
 let accu = 0;
@@ -98,10 +99,41 @@ class Ball {
 
 
 
-window.addEventListener("click", (event)=> {
-    balls.push(new Ball(event.clientX, event.clientY, 0, 0, "yellow", 10,10));
+canvas.addEventListener("mousedown", (e) => {
+  if (e.button == 2) {
+    dragging = true;
+  }
+  pos0 = { x: e.clientX, y: e.clientY };
+  balls.push(
+    new Ball(
+      pos0.x,
+      pos0.y,
+      0,
+      0,
+      document.querySelector("#color").value,
+      parseInt(document.querySelector("#mass").value),
+      parseInt(document.querySelector("#density").value),
+    ),
+  );
+//   balls.at(-1).dragging = true;
 });
 
+window.addEventListener("mouseup", (e) => {
+  pos = { x: e.clientX, y: e.clientY };
+  if (dragging) {
+    dragging = false;
+  } else {
+    bodies.at(-1).pos0.x += (pos.x - pos0.x) / 100;
+    bodies.at(-1).pos0.y += (pos.y - pos0.y) / 100;
+    bodies.at(-1);
+  }
+});
+
+window.addEventListener("resize", ()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const c = canvas.getContext("2d");
+})
 
 
 

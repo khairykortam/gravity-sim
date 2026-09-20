@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+    <div id="tools">
+        Mass : <input type="range" id="mass" min="1000" max="1000000">
+        Density : <input type="range" id="density" min="1" max="100">
+        <input type="color" id="color" value="#ffffff">
+        <button>Add</button>
+    </div>
     <canvas id="canvas"></canvas>
     <script src="ball.js"></script>
 </body>
