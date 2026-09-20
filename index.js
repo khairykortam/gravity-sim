@@ -98,4 +98,4 @@ function animate(t) {
     }
   }
 }
-animate()
+animate();
