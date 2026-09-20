@@ -66,10 +66,10 @@ class Ball {
             this.pos.y = canvas.height - r;
             this.pos0.y = this.pos.y + vy * damp; 
         }
-        else if(this.pos.y < r){
-            this.pos.y = r;
-            this.pos0.y = this.pos.y + vy * damp; 
-        }
+        // else if(this.pos.y < r){
+        //     this.pos.y = r;
+        //     this.pos0.y = this.pos.y + vy * damp; 
+        // }
         if(this.pos.x > canvas.width - r){
             this.pos.x = canvas.width - r;
             this.pos0.x = this.pos.x + vx * damp; 
@@ -115,7 +115,7 @@ canvas.addEventListener("mousedown", (e) => {
       parseInt(document.querySelector("#density").value),
     ),
   );
-//   balls.at(-1).dragging = true;
+//   balls.at(-1).dragging = true
 });
 
 window.addEventListener("mouseup", (e) => {
